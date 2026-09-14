@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FAF8F5] text-[#2E2A27] antialiased min-h-screen selection:bg-[#F2D4CC];
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Smooth scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-[#F5F2EB] rounded;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#DFD9CE] rounded hover:bg-[#C5BEB1] transition-colors;
+  }
+}
+
+/* Custom premium aesthetics */
+.polaroid-shadow {
+  box-shadow: 
+    0 1px 3px rgba(46, 42, 39, 0.05),
+    0 10px 25px -5px rgba(46, 42, 39, 0.08),
+    0 8px 16px -8px rgba(46, 42, 39, 0.08);
+}
+
+.polaroid-frame {
+  @apply bg-white p-4 pb-12 rounded-lg border border-[#EDEAE3] polaroid-shadow transition-transform duration-300;
+}
+
+.premium-panel {
+  @apply bg-white border border-[#EDEAE3] rounded-2xl shadow-sm transition-all duration-300;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-handwritten {
+  font-family: 'Caveat', cursive, sans-serif;
+}

@@ -1,0 +1,211 @@
+# Dataset Preparation Report
+
+- **Final number of breeds**: 187
+- **Final number of images**: 147187
+
+## Images per Split
+- **Train**: 102944
+- **Validation**: 21988
+- **Test**: 22255
+
+## Skipped / Invalid Files
+- **Corrupt/Unreadable images removed**: 0
+- **Unsupported format files removed**: 0
+- **Empty folders detected**: 0
+
+## Merged Breed Folders
+None (all standardized uniquely based on lowercase + underscore rules).
+
+## Ambiguous Breeds Requiring Manual Review
+None. All breed names mapped uniquely without ambiguity.
+
+## Images Per Breed
+| Breed | Image Count |
+| --- | --- |
+| abyssinian | 255 |
+| affenpinscher | 150 |
+| afghan_hound | 239 |
+| african_hunting_dog | 169 |
+| airedale | 202 |
+| american_bobtail | 991 |
+| american_curl | 149 |
+| american_shorthair | 5295 |
+| american_staffordshire_terrier | 164 |
+| american_wirehair | 19 |
+| appenzeller | 151 |
+| applehead_siamese | 135 |
+| australian_terrier | 196 |
+| balinese | 254 |
+| basenji | 209 |
+| basset | 175 |
+| beagle | 195 |
+| bedlington_terrier | 182 |
+| bengal | 2477 |
+| bernese_mountain_dog | 218 |
+| birman | 227 |
+| black_and_tan_coonhound | 159 |
+| blenheim_spaniel | 188 |
+| bloodhound | 187 |
+| bluetick | 171 |
+| bombay | 1835 |
+| border_collie | 150 |
+| border_terrier | 172 |
+| borzoi | 151 |
+| boston_bull | 182 |
+| bouvier_des_flandres | 150 |
+| boxer | 151 |
+| brabancon_griffon | 153 |
+| briard | 152 |
+| british_shorthair | 567 |
+| brittany_spaniel | 152 |
+| bull_mastiff | 156 |
+| burmese | 344 |
+| burmilla | 8 |
+| cairn | 197 |
+| calico | 3468 |
+| canadian_hairless | 4 |
+| cardigan | 155 |
+| chartreux | 84 |
+| chausie | 24 |
+| chesapeake_bay_retriever | 167 |
+| chihuahua | 152 |
+| chinchilla | 3 |
+| chow | 196 |
+| clumber | 150 |
+| cocker_spaniel | 159 |
+| collie | 153 |
+| cornish_rex | 171 |
+| curly_coated_retriever | 151 |
+| cymric | 17 |
+| dandie_dinmont | 180 |
+| devon_rex | 119 |
+| dhole | 150 |
+| dilute_calico | 3230 |
+| dilute_tortoiseshell | 3152 |
+| dingo | 156 |
+| doberman | 150 |
+| domestic_long_hair | 4499 |
+| domestic_medium_hair | 5482 |
+| domestic_short_hair | 53027 |
+| egyptian_mau | 305 |
+| english_foxhound | 157 |
+| english_setter | 161 |
+| english_springer | 159 |
+| entlebucher | 202 |
+| eskimo_dog | 150 |
+| exotic_shorthair | 471 |
+| extra_toes_cat_hemingway_polydactyl | 1184 |
+| flat_coated_retriever | 152 |
+| french_bulldog | 159 |
+| german_shepherd | 152 |
+| german_short_haired_pointer | 152 |
+| giant_schnauzer | 157 |
+| golden_retriever | 150 |
+| gordon_setter | 153 |
+| great_dane | 156 |
+| great_pyrenees | 213 |
+| greater_swiss_mountain_dog | 168 |
+| groenendael | 150 |
+| havana | 184 |
+| himalayan | 1301 |
+| ibizan_hound | 188 |
+| irish_setter | 155 |
+| irish_terrier | 169 |
+| irish_water_spaniel | 150 |
+| irish_wolfhound | 218 |
+| italian_greyhound | 182 |
+| japanese_bobtail | 127 |
+| japanese_spaniel | 185 |
+| javanese | 25 |
+| keeshond | 158 |
+| kelpie | 153 |
+| kerry_blue_terrier | 179 |
+| komondor | 154 |
+| korat | 68 |
+| kuvasz | 150 |
+| labrador_retriever | 171 |
+| lakeland_terrier | 197 |
+| laperm | 17 |
+| leonberg | 210 |
+| lhasa | 186 |
+| maine_coon | 1418 |
+| malamute | 178 |
+| malinois | 150 |
+| maltese_dog | 252 |
+| manx | 2059 |
+| mexican_hairless | 155 |
+| miniature_pinscher | 184 |
+| miniature_poodle | 155 |
+| miniature_schnauzer | 154 |
+| munchkin | 181 |
+| nebelung | 148 |
+| newfoundland | 195 |
+| norfolk_terrier | 172 |
+| norwegian_elkhound | 196 |
+| norwegian_forest_cat | 580 |
+| norwich_terrier | 185 |
+| ocicat | 118 |
+| old_english_sheepdog | 169 |
+| oriental_long_hair | 37 |
+| oriental_short_hair | 491 |
+| oriental_tabby | 101 |
+| otterhound | 151 |
+| papillon | 196 |
+| pekinese | 149 |
+| pembroke | 181 |
+| persian | 4018 |
+| pixiebob | 111 |
+| pomeranian | 219 |
+| pug | 200 |
+| ragamuffin | 134 |
+| ragdoll | 2669 |
+| redbone | 148 |
+| rhodesian_ridgeback | 172 |
+| rottweiler | 152 |
+| russian_blue | 1870 |
+| saint_bernard | 170 |
+| saluki | 200 |
+| samoyed | 218 |
+| schipperke | 154 |
+| scotch_terrier | 158 |
+| scottish_deerhound | 232 |
+| scottish_fold | 380 |
+| sealyham_terrier | 202 |
+| selkirk_rex | 77 |
+| shetland_sheepdog | 157 |
+| shih_tzu | 214 |
+| siamese | 2888 |
+| siberian | 189 |
+| siberian_husky | 192 |
+| silky_terrier | 183 |
+| silver | 94 |
+| singapura | 22 |
+| snowshoe | 1625 |
+| soft_coated_wheaten_terrier | 156 |
+| somali | 36 |
+| sphynx | 209 |
+| staffordshire_bullterrier | 155 |
+| standard_poodle | 159 |
+| standard_schnauzer | 155 |
+| sussex_spaniel | 151 |
+| tabby | 3012 |
+| tibetan_mastiff | 152 |
+| tibetan_terrier | 206 |
+| tiger | 2256 |
+| tonkinese | 260 |
+| torbie | 3396 |
+| tortoiseshell | 3963 |
+| toy_poodle | 151 |
+| toy_terrier | 172 |
+| turkish_angora | 750 |
+| turkish_van | 815 |
+| tuxedo | 3181 |
+| vizsla | 154 |
+| walker_hound | 153 |
+| weimaraner | 160 |
+| welsh_springer_spaniel | 150 |
+| west_highland_white_terrier | 169 |
+| whippet | 187 |
+| wire_haired_fox_terrier | 157 |
+| york_chocolate | 1 |
+| yorkshire_terrier | 164 |
