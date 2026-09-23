@@ -3,7 +3,7 @@ import { DropZone } from './components/DropZone';
 import { SampleSelector } from './components/SampleSelector';
 import { ResultsPanel } from './components/ResultsPanel';
 import { SupportedBreeds } from './components/SupportedBreeds';
-import { AlertCircle, PawPrint } from 'lucide-react';
+import { AlertCircle, PawPrint, X } from 'lucide-react';
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 
@@ -185,12 +185,22 @@ function App() {
 
         {/* Error Alert */}
         {error && (
-          <div className="p-4 bg-red-50/70 border-l-4 border-red-500 rounded-r-xl flex items-start gap-3 max-w-xl mx-auto shadow-sm">
-            <AlertCircle className="text-red-600 shrink-0 mt-0.5" size={18} />
-            <div>
-              <h4 className="font-bold text-red-950 text-xs uppercase tracking-wider">Analysis Failed</h4>
-              <p className="text-xs text-red-800 mt-1">{error}</p>
+          <div className="p-4 bg-red-50/70 border-l-4 border-red-500 rounded-r-xl flex items-start justify-between gap-3 max-w-xl mx-auto shadow-sm">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="text-red-600 shrink-0 mt-0.5" size={18} />
+              <div>
+                <h4 className="font-bold text-red-950 text-xs uppercase tracking-wider">Analysis Failed</h4>
+                <p className="text-xs text-red-800 mt-1">{error}</p>
+              </div>
             </div>
+            <button
+              type="button"
+              onClick={() => setError(null)}
+              className="text-red-400 hover:text-red-700 transition-colors p-1"
+              aria-label="Dismiss error"
+            >
+              <X size={16} />
+            </button>
           </div>
         )}
 

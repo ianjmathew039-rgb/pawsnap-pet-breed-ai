@@ -7,8 +7,9 @@ from torchvision import transforms, models
 from fastapi import FastAPI, UploadFile, File, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from PIL import Image
+from PIL import Image, ImageOps, UnidentifiedImageError
 import io
+import gc
 
 app = FastAPI(title="PawSnap API")
 
@@ -222,9 +223,20 @@ async def predict(file: UploadFile = File(...)):
     if model is None or len(class_names) == 0:
         raise HTTPException(status_code=500, detail="Machine Learning model or labels not loaded on backend.")
     
+    input_tensor = None
+    outputs = None
+    probabilities = None
+    image = None
     try:
         contents = await file.read()
-        image = Image.open(io.BytesIO(contents)).convert("RGB")
+        if not contents:
+            raise HTTPException(status_code=400, detail="The uploaded image file is empty.")
+
+        try:
+            image = Image.open(io.BytesIO(contents))
+            image = ImageOps.exif_transpose(image).convert("RGB")
+        except (UnidentifiedImageError, OSError) as img_err:
+            raise HTTPException(status_code=400, detail=f"Cannot decode uploaded image: {str(img_err)}")
         
         # Preprocess matching the training/prediction pipeline
         preprocess = transforms.Compose([
@@ -280,10 +292,29 @@ async def predict(file: UploadFile = File(...)):
             "predictions": results,
             "breed_details": breed_details
         }
+    except HTTPException:
+        raise
     except Exception as e:
         print(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to process image: {str(e)}")
+    finally:
+        # Crucial resource cleanup: Close UploadFile handle to avoid OS file locking and resource leaks
+        try:
+            await file.close()
+        except Exception:
+            pass
+
+        # Clean up image and PyTorch tensor allocations
+        if image is not None:
+            try:
+                image.close()
+            except Exception:
+                pass
+        del input_tensor, outputs, probabilities
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        gc.collect()
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)

@@ -1,17 +1,28 @@
 # Determine paths
-$VenvPath = Join-Path (Get-Item -Path "..").FullName ".venv"
-$PythonPath = Join-Path $VenvPath "Scripts\python.exe"
+$CandidatePaths = @(
+    (Join-Path $PSScriptRoot ".venv\Scripts\python.exe"),
+    (Join-Path (Get-Item -Path $PSScriptRoot).Parent.FullName ".venv\Scripts\python.exe"),
+    (Join-Path (Get-Item -Path "..").FullName ".venv\Scripts\python.exe")
+)
 
-if (!(Test-Path $PythonPath)) {
-    Write-Host "Error: Could not find virtual environment Python at $PythonPath" -ForegroundColor Red
+$PythonPath = $null
+foreach ($cand in $CandidatePaths) {
+    if (Test-Path $cand) {
+        $PythonPath = $cand
+        break
+    }
+}
+
+if (-not $PythonPath) {
+    Write-Host "Error: Could not find virtual environment Python in $CandidatePaths" -ForegroundColor Red
     Exit 1
 }
 
-Write-Host "Found virtual environment at: $VenvPath" -ForegroundColor Green
+Write-Host "Found Python interpreter at: $PythonPath" -ForegroundColor Green
 
-# 1. Start FastAPI Backend in a new window so you can see request logs
+# 1. Start FastAPI Backend in a new window so you can see request logs (without --reload to prevent Windows PyTorch crashes)
 Write-Host "Starting FastAPI Backend on http://localhost:8000..." -ForegroundColor Cyan
-Start-Process -FilePath $PythonPath -ArgumentList "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" -WorkingDirectory (Join-Path $PSScriptRoot "backend")
+Start-Process -FilePath $PythonPath -ArgumentList "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000" -WorkingDirectory (Join-Path $PSScriptRoot "backend")
 
 # Wait a moment for PyTorch model loading
 Write-Host "Waiting 3 seconds for model loading..." -ForegroundColor Yellow

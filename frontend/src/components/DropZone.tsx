@@ -44,11 +44,15 @@ export const DropZone: React.FC<DropZoneProps> = ({
     if (e.target.files && e.target.files[0]) {
       onFileSelect(e.target.files[0]);
     }
+    // Reset value so re-selecting the same file or switching files always triggers onChange
+    e.target.value = '';
   };
 
   const onButtonClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    fileInputRef.current?.click();
+    if (!loading) {
+      fileInputRef.current?.click();
+    }
   };
 
   return (
@@ -70,6 +74,7 @@ export const DropZone: React.FC<DropZoneProps> = ({
         className="hidden"
         accept="image/*"
         onChange={handleFileInput}
+        onClick={(e) => e.stopPropagation()}
         disabled={loading}
       />
 
